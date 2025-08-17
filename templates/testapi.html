@@ -1,0 +1,189 @@
+{% extends "index.html" %}
+{% import "macros.html" as macros %}
+{% block title %}API Testing{% endblock %}
+{% block body %}
+<link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='comment/style.css') }}"
+    />
+<style>
+    
+  </style>
+<h2 class="page-title">API Testing</h2>
+<div class="card-box">
+    <a class="btn-liquid" href="/api" ><span class="fas fa-arrow-left" style="font-size: large;"></span></a>
+    <br/><br>
+    <h2 class="page-title">Myanmar To English</h2>
+    <div class="form-group">
+        <label for="inputField">Your Token</label>
+        <i class="fas fa-key"></i>
+        <input type="password" id="token" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJueWVpbmNoYW4iLCJleHAiOjE3ODM4NzAzNDl9.ylldfPNo5BlOVYzg4Ewr22Yitin3lHbnfJEYqJt2HlA" placeholder="Your Token" />
+        <span class="fas fa-eye toggle-password" id="togglePasswordIcon" onclick="togglePassword('token','togglePasswordIcon')" title="Show password"></span>
+    </div>
+    <div class="form-group">
+        <label for="inputField">မြန်မာအမည် ရိုက်ထည့်ပါ။</label>
+        <i class="fas fa-file-word"></i>
+        <input type="text" id="mte" placeholder="မြန်မာအမည် ရိုက်ထည့်ပါ။" />
+        <span class="fas fa-copy toggle-password" id="toggleTextareaIcon" onclick="copy('mte','m1')" title="Copy text"></span>
+    </div> 
+    <span
+        id="m1"
+        style="color: limegreen; margin-left: 10px; display: none"
+        >✔ Copied!</span>
+     <button class="btn-liquid" style="width: 40%;" id="btnmte">Convert</button>  
+    <button class="btn-liquid" style="width: 40%;" id="btncancel">Clean</button>
+    <div id="login-loading" class="spinner-border text-primary" role="status" style="display: none; margin-left: 10px;text-align: center;">
+        <span class="visually-hidden">Please wait...</span>
+    </div>
+    <div class="form-group">
+        <label for="inputField">မြန်မာ - အင်္ဂလိပ်</label>
+        <i class="fas fa-file-word"></i>
+        <input type="text" id="resultmte" placeholder="မြန်မာ - အင်္ဂလိပ်" />
+        <span class="fas fa-copy toggle-password" id="toggleTextareaIcon" onclick="copy('resultmte','copy-message')" title="Copy text"></span>
+    </div>
+     <span
+        id="copy-message"
+        style="color: limegreen; margin-left: 10px; display: none"
+        >✔ Copied!</span>
+    
+    <br>
+</div>
+
+<div class="card-box">
+    <a class="btn-liquid" href="/api" ><span class="fas fa-arrow-left" style="font-size: large;"></span></a>
+    <br/><br>
+    <h2 class="page-title">Parli To English</h2>
+    <div class="form-group">
+        <label for="inputField">Your Token</label>
+        <i class="fas fa-key"></i>
+        <input type="password" id="tokenparli" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJueWVpbmNoYW4iLCJleHAiOjE3ODM4NzAzNDl9.ylldfPNo5BlOVYzg4Ewr22Yitin3lHbnfJEYqJt2HlA" placeholder="Your Token" />
+        <span class="fas fa-eye toggle-password" id="togglePasswordIcon" onclick="togglePassword('tokenparli','togglePasswordIcon')" title="Show password"></span>
+    </div>
+    <div class="form-group">
+        <label for="inputField">ပါဠိအမည် ရိုက်ထည့်ပါ။</label>
+        <i class="fas fa-file-word"></i>
+        <input type="text" id="pte" placeholder="ပါဠိအမည် ရိုက်ထည့်ပါ။။" />
+        <span class="fas fa-copy toggle-password" id="toggleTextareaIcon" onclick="copy('pte','m2')" title="Copy text"></span>
+    </div> 
+    <span
+        id="m2"
+        style="color: limegreen; margin-left: 10px; display: none"
+        >✔ Copied!</span>
+     <button class="btn-liquid" style="width: 40%;" id="btnpte">Convert</button>  
+    <button class="btn-liquid" style="width: 40%;" id="btncancelpali">Clean</button>
+    <div id="login-loading1" class="spinner-border text-primary" role="status" style="display: none; margin-left: 10px;text-align: center;">
+        <span class="visually-hidden">Please wait...</span>
+    </div>
+    <div class="form-group">
+        <label for="inputField">ပါဠိ - ရိုမန်</label>
+        <i class="fas fa-file-word"></i>
+        <input type="text" id="resultpte" placeholder="ပါဠိ - ရိုမန်" />
+        <span class="fas fa-copy toggle-password" id="toggleTextareaIcon" onclick="copy('resultpte','copy-message1')" title="Copy text"></span>
+    </div>
+    <span
+        id="copy-message1"
+        style="color: limegreen; margin-left: 10px; display: none"
+        >✔ Copied!</span>
+    
+    <br>
+</div>
+
+<script>
+    $(document).ready(function () {
+       function fun_mte ()
+        {
+            var token = $("#token").val();
+            var mte = $("#mte").val();
+
+            if (token && mte) {
+                $("#login-loading").show(); // Show loading spinner
+                $.ajax({
+                    type: "POST",
+                    url: "/api/test_mte",
+                    contentType: "application/json",
+                    data: JSON.stringify({ token: token, mte: mte }),
+                    success: function (response) {
+                        $("#resultmte").val(response.received_text); // Display the result in the input field
+                        $("#login-loading").hide(); // Hide loading spinner
+                    },
+                    error: function (xhr) {
+                        $("#login-loading").hide(); // Hide loading spinner
+                        alert("Registration failed: " + xhr.responseText);
+                    },
+                    complete: function () {
+                        $("#login-loading").hide(); // Hide loading spinner
+                    }
+                 });
+            } else {
+                alert("Please fill in all fields.");
+        }
+    }
+
+    $("#btnmte").click(function () {
+            fun_mte(); // Call the function to handle the input
+      
+    });
+
+    $("#mte").keypress(function (event) {
+            if (event.which === 13) { // Enter key
+                event.preventDefault(); // Prevent form submission
+                fun_mte(); // Call the function to handle the input
+            }
+    });
+
+    $("#btncancel").click(function () {
+            $("#mte").val('');
+            $("#resultmte").val(''); 
+        });
+
+    function fun_pte ()
+        {
+            var token = $("#tokenparli").val();
+            var pte = $("#pte").val();
+
+            if (token && pte) {
+                $("#login-loading1").show(); // Show loading spinner
+                $.ajax({
+                    type: "POST",
+                    url: "/api/test_pte",
+                    contentType: "application/json",
+                    data: JSON.stringify({ token: token, pte: pte }),
+                    success: function (response) {
+                       
+                        $("#resultpte").val(response.received_text); // Display the result in the input field
+                        $("#login-loading1").hide(); // Hide loading spinner
+                    },
+                    error: function (xhr) {
+                        $("#login-loading1").hide(); // Hide loading spinner
+                        alert("Registration failed: " + xhr.responseText);
+                    },
+                    complete: function () {
+                        $("#login-loading1").hide(); // Hide loading spinner
+                    }
+                 });
+            } else {
+                alert("Please fill in all fields.");
+        }
+    }
+
+    $("#btnpte").click(function () {
+            fun_pte(); // Call the function to handle the input
+        });
+
+    $("#pte").keypress(function (event) {
+            if (event.which === 13) { // Enter key
+                
+                event.preventDefault(); // Prevent form submission
+                fun_pte(); // Call the function to handle the input
+               
+            }
+    });
+
+    $("#btncancelpali").click(function () {
+            $("#pte").val('');
+            $("#resultpte").val(''); 
+        });
+    });
+</script>
+
+{% endblock %}

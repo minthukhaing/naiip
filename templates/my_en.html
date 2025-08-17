@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+{% import "macros.html" as macros %}
+{% block title %}မြန်မာအညွှန်း{% endblock %}
+{% block body %}
+
+<h2 class="page-title">မြန်မာအညွှန်း</h2>
+<div class="table-container">
+    {{ macros.render_table_myen(data1, header1) }}
+</div>
+<div class="mg"></div>
+<div class="card-box">
+    {{ macros.render_ul(content_list_1) }}
+</div>
+<div class="mg"></div>
+<div class="table-container">
+    {{ macros.render_table_myen(data2, header1) }}
+</div>
+<div class="mg"></div>
+<div class="card-box">
+    {{ macros.render_ul(content_list_2) }}
+</div>
+<div class="mg"></div>
+<div class="table-container">
+    {{ macros.render_table_myen(data3, header1) }}
+</div>
+<div class="mg"></div>
+<div class="card-box">
+    {{ macros.render_ul(content_list_3) }}
+</div>
+
+{% endblock %}

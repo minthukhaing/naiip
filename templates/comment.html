@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Comments</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='comment/style.css') }}"
+    />
+  </head>
+  <body>
+    <h1>🗨️ Comments</h1>
+
+    {% if session.user %}
+    <form action="{{ url_for('add_comment') }}" method="post">
+      <textarea
+        name="comment_text"
+        class="reply-input"
+        placeholder="Write your comment here..."
+      ></textarea
+      ><br />
+      <button type="submit" class="btn-liquid">Post Comment</button>
+    </form>
+    <br />
+    {% else %}
+    <p>Please <a href="{{ url_for('login') }}">login</a> to post a comment.</p>
+    {% endif %}
+
+    <hr />
+
+    <br />
+    <!-- Recursive Comment Rendering -->
+    {% macro render_comments(comments, depth=0) %} {% for comment in comments %}
+    <div class="comment-box" style="margin-left: {{ depth * 20 }}px;">
+      <span class="user">{{ comment.userId }}</span>: {{ comment.text }}<br />
+      <span class="timestamp"
+        >{{ comment.createdAt.strftime('%Y-%m-%d %H:%M') }}</span
+      >
+      <div class="reaction-buttons">
+        {% if session.user %}
+        <a href="{{ url_for('like_comment', comment_id=comment._id) }}"
+          >👍 {{ comment.likes }}</a
+        >
+        <a href="{{ url_for('unlike_comment', comment_id=comment._id) }}"
+          >👎 {{ comment.unlikes }}</a
+        >
+        <a
+          href="#reply-form-{{ comment._id }}"
+          onclick="toggleReplyForm('{{ comment._id }}')"
+          >💬 Reply</a
+        >
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Hidden Reply Form -->
+    <div id="reply-form-container-{{ comment._id }}" style="display: none">
+      <form
+        action="{{ url_for('reply_comment', parent_id=comment._id) }}"
+        method="post"
+      >
+        <textarea
+          name="reply_text"
+          placeholder="Your reply..."
+          class="reply-input"
+          required
+        >
+        </textarea>
+        <br />
+        <button type="submit" class="btn-liquid" style="width: 30%">
+          Send
+        </button>
+        <button
+          type="button"
+          class="btn-liquid"
+          style="width: 30%"
+          onclick="toggleReplyForm('{{ comment._id }}')"
+        >
+          Cancel
+        </button>
+      </form>
+      <br />
+    </div>
+
+    <!-- Recursively Render Replies -->
+    {% if comment.replies %} {{ render_comments(comment.replies, depth + 1) }}
+    {% endif %} {% endfor %} {% endmacro %} {{ render_comments(comments, 0) }}
+
+    <hr />
+    <br />
+
+    <div style="text-align: center">
+      <a
+        href="?weeks_loaded={{ weeks_loaded + 1 }}"
+        class="btn-liquid"
+        style="text-decoration: none"
+        >➕ Load More Comments</a
+      >
+     <br/><br/>
+        
+        {{ session.get('end_date', 'N/A').strftime('%Y-%m-%d') }} ရက်နေ့မှ 
+        {{ session.get('start_date', 'N/A').strftime('%Y-%m-%d') }} ရက်နေ့အထိ
+        ပြသထားပါသည်။
+      </p>
+    
+    </div>
+
+    <br />
+
+    <div class="links">
+      {% if session.user %}
+      <a class="btn-liquid" style="text-decoration: none" href="{{ url_for('logout') }}">🔓 Logout</a>
+      {% else %}
+      <a class="btn-liquid" style="text-decoration: none" href="{{ url_for('login') }}">🔑 Login</a>
+      <a class="btn-liquid" style="text-decoration: none" href="{{ url_for('register') }}">📝 Register</a>
+      {% endif %}
+    </div>
+
+    <script>
+      function toggleReplyForm(commentId) {
+        const container = document.getElementById(
+          "reply-form-container-" + commentId
+        );
+        const textarea = container.querySelector("textarea");
+
+        if (container.style.display === "none") {
+          container.style.display = "block";
+          // Clear the textarea when showing
+          if (textarea) {
+            textarea.value = ""; // Clear any spaces or text
+          }
+        } else {
+          container.style.display = "none";
+          // Optional: clear on hide as well
+          if (textarea) {
+            textarea.value = "";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

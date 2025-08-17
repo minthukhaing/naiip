@@ -1,0 +1,154 @@
+Modern Comment System Styling
+General Reset
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+/* body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #ffffff;
+} */
+
+
+
+
+.reply-input {
+    width: calc(100% - 100px); /* ဖောင်ပေါ်က button နဲ့အတူစားနိုင်အောင် */
+    padding: 8px 12px;
+    height: 100px;;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    margin-top: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.reply-input:focus {
+    border-color: rgba(0, 213, 255, 0.64);
+    box-shadow: 0 0 0 2px rgba(0, 213, 255, 0.64);
+    outline: none;
+    background-color: transparent;
+}
+
+form button {
+    background-color: #af844c;
+    color: white;
+    border: none; 
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* form button:hover {
+    background-color: #9a7344;
+} */
+
+/* Links */
+a {
+    color: #1E90FF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Comment Box */
+.comment-box {
+    border-left: 3px solid rgba(0, 213, 255, 0.64);
+    padding: 15px;
+    margin-left: 20px;
+    background-color: transparent;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 1px 2px 4px rgba(26, 25, 25, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+.comment-box:hover {
+    background-color: rgb(5, 49, 71);
+}
+
+.user {
+    font-weight: bold;
+    color: #87CEFA;
+}
+
+.timestamp {
+    font-size: 0.8em;
+    color: #aaaaaa;
+    display: block;
+    margin-top: 5px;
+}
+
+.reaction-buttons a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #bbbbbb;
+}
+
+.reaction-buttons a:hover {
+    color: #af844c;
+}
+
+.reply-input {
+    width: 100%;
+    padding: 12px 20px;
+    height: 100px;
+    border: 2px solid rgba(0, 213, 255, 0.64);
+    border-radius: 8px;
+    font-size: 18px;
+    transition: all 0.3s;
+    background-color: transparent;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.reply-input:focus {
+    border-color: rgba(0, 213, 255, 0.64);
+        box-shadow: 0 0 0 2px rgba(0, 213, 255, 0.64);
+        outline: none;
+        background-color: transparent;
+}
+
+.reply-form button {
+    background-color: #4a4a4a;
+    color: #fff;
+    margin-left: 5px;
+}
+
+.reply-form button:hover {
+    background-color: #5a5a5a;
+}
+
+.load-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #af844c;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid #af844c;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.load-more:hover {
+    background-color: #af844c;
+    color: white;
+}
+
+.links {
+    text-align: center;
+    margin-top: 10px;
+    color:white;
+}

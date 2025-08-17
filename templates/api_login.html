@@ -1,0 +1,160 @@
+{% extends "index.html" %}
+{% import "macros.html" as macros %}
+{% block title %}API Documentation{% endblock %}
+{% block body %}
+
+<link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='comment/style.css') }}"
+    />
+<h2 class="page-title">API Documentation</h2>
+<div class="card-box">
+    <h3 style="padding: 10px;">API အသုံးပြုသူများအနေဖြင့် အောက်ပါအတိုင်း လုပ်ဆောင်ရမည်ဖြစ်ပါသည်။</h3>
+    <ul>
+        <li><b>Step-1</b> : API ကို အသုံးပြုရန် အရင်ဆုံး <a href="#api-login-form">Login</a> လုပ်ရမည်။ API account မရှိပါက <a href="/api_register">Register</a> လုပ်ပါ။</li>
+        <li><b>Step-2</b> : Login လုပ်ပြီးလျှင် <a href="#api-token">Access Token</a> ကို ရရှိမည်။</li>
+        <li><b>Step-3</b> : Access Token ကို <a href="#api-testing">API Request</a> များတွင် အသုံးပြုနိုင်သည်။</li>
+    </ul>
+
+</div>
+<div class="card-box" id="api-login-form">
+    <h2>API Login</h2>
+    <div class="form-group">
+        <label for="inputField">User Name</label>
+        <i class="fas fa-user"></i>
+        <input type="text" id="username" placeholder="User Name" />
+    </div>
+    <div class="form-group">
+        <label for="inputField">Password</label>
+        <i class="fas fa-lock"></i>
+        <input type="password" id="password" placeholder="Password" />
+        <span class="fas fa-eye toggle-password" id="togglePasswordIcon" onclick="togglePassword('password','togglePasswordIcon')" title="Show password"></span>
+    </div>
+    <button class="btn-liquid" style="width: 40%;" id="btnapilogin">Login</button>    
+    <button class="btn-liquid" style="width: 40%;" id="btnlogincancel">Cancel</button>
+    <div id="login-loading" class="spinner-border text-primary" role="status" style="display: none; margin-left: 10px;text-align: center;">
+        <span class="visually-hidden">Please wait...</span>
+    </div>
+    <div class="form-group" id="api-token">
+        <label for="inputField">Result Token</label>
+        <i class="fas fa-key"></i>
+        <textarea
+        rows="4"
+        id="result_token"
+        class="reply-input"
+        readonly
+        placeholder="Your token  here..."
+      ></textarea>
+      <span class="fas fa-copy toggle-password" id="toggleTextareaIcon" onclick="copy('result_token','copy-message')" title="Copy text"></span>
+    </div>
+    
+   <a class="btn-liquid" style="text-decoration: none;" href="/api_testing">Testing API Example</a><br><br>
+    <span
+        id="copy-message"
+        style="color: limegreen; margin-left: 10px; display: none"
+        >✔ Copied!</span>
+      <hr><br>
+      <center >
+        <p style="padding: 10px;">If you have no account for API access, please register first.</p>
+        <a style="text-decoration: none;" class="btn-liquid" href="/api_register" >Register</a>
+        <p style="padding: 10px;">After registration, you can use the API with your credentials.</p>
+
+      </center>
+      <br>
+</div>  
+<div class="card-box" id="api-testing">
+    <h2>API Testing with CURL</h2>
+    <p><strong>CURL code for myanmar to english:</strong></p>
+    <pre>
+    curl -X 'POST' 'http://naiip.org:8000/myanmar_to_english' \
+        -H 'accept: application/json' \
+        -H 'Authorization: Bearer your_access_token' \
+        -H 'Content-Type: application/json' \
+        -d '{
+        "text": "ငြိမ်းချမ်း"
+    }'
+    </pre>
+    <p><strong>Response body:</strong></p>
+    <pre>
+    {
+        "received_text": "Ngyeimm Chamm",
+        "length": 11,
+        "message": "Your text (myanmar_to_english): 'ငြိမ်းချမ်း'",
+        "user": "uchan"
+    }
+    </pre>
+    <hr><br>
+    <p><strong>CURL code for parli to english:</strong></p>
+    <pre>
+    curl -X 'POST' 'http://naiip.org:8000/parli_to_english' \
+        -H 'accept: application/json' \
+        -H 'Authorization: Bearer your_access_token' \
+        -H 'Content-Type: application/json' \
+        -d '{
+        "text": "ဒေါက်တာနန္ဒမာလာဘိဝံသ"
+    }'
+    </pre>
+    <p><strong>Response body:</strong></p>
+    <pre>
+    {
+        "received_text": "Dr. Nandamālābhivaṁsa",
+        "length": 20,
+        "message": "Your text (parli_to_english): 'ဒေါက်တာနန္ဒမာလာဘိဝံသ'",
+        "user": "uchan"
+    }
+    </pre>
+
+    <a href="/api_testing" class="btn-liquid" style="text-decoration: none;">Testing API Example</a><br><br>
+
+</div>  
+
+<script>
+    $(document).ready(function () {
+        $("#btnapilogin").click(function () {
+            var username = $("#username").val();
+            var password = $("#password").val();
+            if (username && password) {
+
+                 // Show loading spinner
+                $('#login-loading').show();
+                 $("#result_token").val('');
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/login",
+                    contentType: "application/json",
+                    data: JSON.stringify({ username: username, password: password }),
+                    success: function (response) {
+                        $("#result_token").val(response.access_token);
+                        $("#copy-message").show().fadeOut(2000);
+                    },
+                    error: function (error) {
+                         $('#login-loading').hide();
+                        alert("Login failed. Please check your credentials.");
+                    },
+                    complete: function () {
+                        // Hide loading spinner
+                        $('#login-loading').hide();
+                    }
+                });
+            } else {
+                alert("Please enter both username and password.");
+            }
+        });
+
+        $("#btn-copyaip").click(function () {
+            var copyText = document.getElementById("result_token");
+            copyText.select();
+            document.execCommand("copy");
+            $("#copy-message").show().fadeOut(2000);
+        });
+
+        $("#btnlogincancel").click(function () {
+            $("#username").val('');
+            $("#password").val('');
+            $("#result_token").val('');
+        });
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+<!-- use active link -->
+{% macro nav_link(href, icon_class, label) %}
+<a href="{{ href }}" class="{% if request.path == href %}active{% endif %}">
+    <i class="{{ icon_class }}"></i> {{ label }}
+</a>
+{% endmacro %}
+
+<!-- use table style for my-en -->
+{% macro render_table_myen(data,header) %}
+<table border="1">
+    <thead>
+
+        <tr>
+            {% for row in header %}
+            <th>{{ row }}</th>
+            {% endfor %}
+        </tr>
+
+    </thead>
+    <tbody>
+        {% for row in data %}
+        <tr>
+            {% for cell in row %}
+            <td>
+                {% set parts = cell.split(" ") %}
+                {% if parts|length == 2 %}
+                {{ parts[0] }} {{ parts[1] }}
+                {% else %}
+                {{ cell }}
+                {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endmacro %}
+
+<!-- use table style for parli -->
+{% macro render_table(data,header) %}
+<table border="1">
+    <thead>
+
+        <tr>
+            {% for row in header %}
+            <th>{{ row }}</th>
+            {% endfor %}
+        </tr>
+
+    </thead>
+    <tbody>
+        {% for row in data %}
+        <tr>
+            {% for cell in row %}
+            <td>
+                {% set parts = cell.split(" ") %}
+                {% if parts|length == 2 %}
+                {{ parts[0] }} → {{ parts[1] }}
+                {% else %}
+                {{ cell }}
+                {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endmacro %}
+
+
+<!-- use ul li style -->
+{% macro render_ul(data) %}
+<ul>
+    {% for row in data %}
+    <li>{{ row }}</li>
+    {% endfor %}
+</ul>
+{% endmacro %}

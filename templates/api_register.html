@@ -1,0 +1,84 @@
+{% extends "index.html" %}
+{% import "macros.html" as macros %}
+{% block title %}API Register{% endblock %}
+{% block body %}
+<link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='comment/style.css') }}"
+    />
+<h2 class="page-title">API Register</h2>
+<div class="card-box">
+    <a class="btn-liquid" href="/api" ><span class="fas fa-arrow-left" style="font-size: large;"></span></a>
+    <br/><br>
+    <div class="form-group">
+        <label for="inputField">User Name</label>
+        <i class="fas fa-user"></i>
+        <input type="text" id="username" placeholder="User Name" />
+    </div>
+    <div class="form-group">
+        <label for="inputField">Password</label>
+        <i class="fas fa-lock"></i>
+        <input type="password" id="password" placeholder="Password" />
+        <span class="fas fa-eye toggle-password" id="togglePasswordIcon" onclick="togglePassword('password','togglePasswordIcon')" title="Show password"></span>
+    </div>
+    <div class="form-group">
+        <label for="inputField">Confirm Password</label>
+        <i class="fas fa-lock"></i>
+        <input type="password" id="confirm_password" placeholder="Confirm Password" />
+        <span class="fas fa-eye toggle-password" id="toggleConfirmPasswordIcon" onclick="togglePassword('confirm_password','toggleConfirmPasswordIcon')" title="Show password"></span>
+    </div>
+    <button class="btn-liquid" style="width: 40%;" id="btnapiregister">Register</button>    
+    <button class="btn-liquid" style="width: 40%;" id="btnregistercancel">Cancel</button>
+    <div id="login-loading" class="spinner-border text-primary" role="status" style="display: none; margin-left: 10px;text-align: center;">
+        <span class="visually-hidden">Please wait...</span>
+    </div>
+
+
+    <br>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#btnapiregister").click(function () {
+            var username = $("#username").val();
+            var password = $("#password").val();
+            var confirmPassword = $("#confirm_password").val();
+
+            if (username && password && confirmPassword) {
+                $("#login-loading").show(); // Show loading spinner
+                if (password === confirmPassword) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/register",
+                        contentType: "application/json",
+                        data: JSON.stringify({ username: username, password: password }),
+                        success: function (response) {
+                            window.location.href = "/api";
+                        },
+                        error: function (xhr) {
+                            $("#login-loading").hide(); // Hide loading spinner
+                            alert("Registration failed: " + xhr.responseText);
+                        },
+                        complete: function () {
+                            $("#login-loading").hide(); // Hide loading spinner
+                        }
+                    });
+                } else {
+                    alert("Passwords do not match!");
+                }
+            } else {
+                alert("Please fill in all fields.");
+            }
+        });
+
+        $("#btnregistercancel").click(function () {
+            $("#username").val('');
+            $("#password").val('');
+            $("#confirm_password").val(''); 
+        });
+
+        
+    });
+</script>
+
+{% endblock %}

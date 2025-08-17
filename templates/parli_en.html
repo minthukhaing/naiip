@@ -1,0 +1,33 @@
+
+{% extends "index.html" %}
+{% import "macros.html" as macros %}
+
+{% block title %}ပါဠိအညွှန်း{% endblock %}
+
+{% block body %}
+<h2 class="page-title">ပါဠိအညွှန်း</h2>
+<div class="table-container">    
+    <h3 class="sub-title">VOWELS</h3>
+    {{ macros.render_table(parli_data1) }}
+    <h3 class="sub-title">CONSONANTS WITH VOWEL 'A'</h3>
+    {{ macros.render_table(parli_data2) }}
+    <div class="mg"></div>
+    {{ macros.render_table(parli_data3) }}
+    <h3 class="sub-title">VOWELS IN COMBINATION</h3>
+    {{ macros.render_table(parli_data4) }}
+    <h3 class="sub-title">CONJUNCT-CONSONANTS</h3>
+    {{ macros.render_table(parli_data5) }}
+    <div class="mg"></div>
+    {{ macros.render_table(parli_data6) }}
+    <div class="mg"></div>
+    {{ macros.render_table(parli_data7) }}
+</div>
+<div class="card-box">
+    <ul>
+        <li>ကျမ်းကိုး - The Pali Alphabet in Myanmar and Roman Characters (ပဋ္ဌာနပါဠိ- ပဋ္ဌမတွဲ)၊ မြန်မာစာ
+            မြန်မာမှု ပါဠိအဘိဓါန်သစ် [ဦးမြတ်ကျော် (မြန်မာစာ အဖွဲ့ဝင်)]၊ ပဒတ္ထမဉ္ဇူသာ ဟူသော ပါဠိ-မြန်မာအဘိဓါန်
+            (ဦးဟုတ်စိန်)။</li>
+    </ul>
+</div>
+{% endblock %}
+

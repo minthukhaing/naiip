@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NAIIP - {% block title %}  {% endblock %}</title>
+    <link
+      rel="apple-touch-icon"
+      href="{{ url_for('static', filename='images/header-logo1.png') }}"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='images/header-logo1.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/all.min.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <script src="{{ url_for('static', filename='css/jquery.min.js') }}"></script>
+
+    <style></style>
+  </head>
+
+  <body>
+    {% block header %}
+    <div class="mobile-header">
+      <div class="hamburger" onclick="toggleSidebar()">
+        <div class="bar top"></div>
+        <div class="bar middle"></div>
+        <div class="bar bottom"></div>
+      </div>
+      <div class="site-name">
+        <img
+          src="{{ url_for('static', filename='images/header-logo.png') }}"
+          alt="My Site Logo"
+          class="site-logo"
+        />
+      </div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <h1>
+        <img
+          src="{{ url_for('static', filename='images/header-logo.png') }}"
+          alt="Menu Icon"
+          class="menu-icon"
+        />
+      </h1>
+      <div class="logo">
+        <img
+          src="{{ url_for('static', filename='images/header-logo2.png') }}"
+          alt="Logo"
+        />
+      </div>
+      {% import 'macros.html' as macros %}
+      <nav>
+        {{ macros.nav_link('/', 'fas fa-home', 'မူလစာမျက်နှာ') }} {{
+        macros.nav_link('/about', 'fas fa-book', 'အကြောင်းအရာ') }} {{
+        macros.nav_link('/my_en', 'fas fa-book-open', 'မြန်မာအညွှန်း') }} {{
+        macros.nav_link('/parli_en', 'fas fa-book-open', 'ပါဠိအညွှန်း') }} 
+        
+        {{
+        macros.nav_link('/api', 'fas fa-phone', 'API Documentation') }}
+      </nav>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    {% endblock %}
+
+    <div class="content">{% block body %} {% endblock %}</div>
+
+    {% block footer %}
+    <footer class="footer">
+      <p>© 2025 Created by NAIIP Team.</p>
+    </footer>
+    {% endblock %}
+    <script src="{{ url_for('static', filename='css/style.js') }}"></script>
+  </body>
+</html>
