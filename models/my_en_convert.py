@@ -24,8 +24,6 @@ async def myan(txt):
 
     word_list = processed_text.split(' ')
     mapped_names = ' '.join(p.get_map(word, word_dict) for word in word_list)
-
-    input_code_point = ''.join(hex(ord(char)) for char in processed_text)
-    output_text = ' '.join(word.capitalize() for word in mapped_names.split())
+    output_text = ' '.join(p._capitalize(word) for word in mapped_names.split())
 
     return output_text

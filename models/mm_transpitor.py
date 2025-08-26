@@ -578,7 +578,7 @@ asatExtendedForm = {
     "ဉ့်": "iint",
     "ဉ်": "iin",
     "ည်း": "ii",
-    "ည့်": "ei",
+    "ည့်": "eii",
     "ည်": "i",
     "ဋ်": "at",
     "ဍ်": "at",
@@ -872,7 +872,7 @@ vowelExtendedForm = {
 
 }
 
-clusterForm = {"ျ": "y", "ြ": "y", "ွ": "w"}
+clusterForm = {"ျ": "y", "ြ": "Y", "ွ": "w"}
 modifyForm = {"ခ": "ch", "ရ": "sh", "သ": "sh"}
 def transcript(text):
     output = []
@@ -901,7 +901,12 @@ def transcript(text):
             and all_but_scc in asatExtendedForm
         ):
             if third_next == 'ှ':
-                if (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
+                if ((next_char in ['ြ']) and char == "ခ"):
+                    if 'ွ' in after_next:
+                        output.append('cH' + asatExtendedForm[all_but_sc])
+                    else:
+                        output.append('cH' + clusterForm[after_next] + asatExtendedForm[all_but_scc])
+                elif (next_char in ['ျ', 'ြ' ] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
                     if 'ွ' in after_next:
                         output.append(
                             vowelForm.get(third_next, "") +
@@ -932,7 +937,12 @@ def transcript(text):
                             asatExtendedForm[all_but_scc]
                         )
             else:
-                if (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
+                if ((next_char in ['ြ']) and char == "ခ"):
+                    if 'ွ' in after_next:
+                        output.append('cH' + asatExtendedForm[all_but_sc])
+                    else:
+                        output.append('cH' + clusterForm[after_next] + asatExtendedForm[all_but_scc])
+                elif (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
                     if 'ွ' in after_next:
                         output.append(
                             modifyForm[char] + asatExtendedForm[all_but_sc]
@@ -976,6 +986,8 @@ def transcript(text):
                             singleton[char] +
                             asatExtendedForm[all_but_s]
                         )
+                elif ((next_char in ['ြ']) and char == "ခ"):
+                        output.append('cH' + asatExtendedForm[all_but_sc])
                 elif (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
                     output.append(
                         f"{vowelForm.get(after_next, '')}{modifyForm[char]}{asatExtendedForm[all_but_sc]}"
@@ -991,6 +1003,8 @@ def transcript(text):
             else:
                 if 'ွ' in next_char:
                     output.append(singleton[char] + asatExtendedForm[all_but_s])
+                elif ((next_char in ['ြ']) and char == "ခ"):
+                        output.append('cH' + asatExtendedForm[all_but_sc])
                 elif (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
                     output.append(f"{modifyForm[char]}{asatExtendedForm[all_but_sc]}")
                 else:
@@ -1025,7 +1039,9 @@ def transcript(text):
             and all_but_scc in vowelExtendedForm
         ):
             if third_next == 'ှ':
-                if (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
+                if ((next_char in ['ြ']) and char == "ခ"):
+                        output.append('cH' + clusterForm[after_next] + vowelExtendedForm[all_but_scc])
+                elif (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
                     output.append(
                         f"{vowelForm.get(third_next, '')}{modifyForm[char]}{clusterForm[after_next]}{vowelExtendedForm[all_but_scc]}"
                     )
@@ -1035,7 +1051,9 @@ def transcript(text):
                     )
                 i += 3 + len(all_but_scc)
             else:
-                if (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
+                if ((next_char in ['ြ']) and char == "ခ"):
+                        output.append('cH' + clusterForm[after_next] + vowelExtendedForm[all_but_scc])
+                elif (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
                     output.append(modifyForm[char] + clusterForm[after_next] + vowelExtendedForm[all_but_scc])
                 else:
                     output.append(
@@ -1054,7 +1072,9 @@ def transcript(text):
         ):
             if third_next in vowelForm:
                 if third_next == 'ှ':
-                    if (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
+                    if ((next_char in ['ြ']) and char == "ခ"):
+                        output.append('cH' + clusterForm[after_next] + 'a')
+                    elif (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
                         output.append(
                             f"{vowelForm.get(third_next, '')}{modifyForm[char]}{clusterForm[after_next]}a"
                         )
@@ -1063,7 +1083,9 @@ def transcript(text):
                             f"{vowelForm.get(third_next, '')}{singleton[char]}{clusterForm[next_char]}{clusterForm[after_next]}a"
                         )
                 else:
-                    if (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
+                    if ((next_char in ['ြ']) and char == "ခ"):
+                        output.append('cH' + clusterForm[after_next] + vowelForm[third_next])
+                    elif (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
                         output.append(modifyForm[char] + clusterForm[after_next] + vowelForm[third_next])
                     else:
                         output.append(
@@ -1074,7 +1096,9 @@ def transcript(text):
                         )
                 i += 4
             else:
-                if (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
+                if ((next_char in ['ြ']) and char == "ခ"):
+                        output.append('cH' + clusterForm[after_next] + 'a')
+                elif (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
                     output.append(f"{modifyForm[char]}{clusterForm[after_next]}a")
                 else:
                     output.append(f"{singleton[char]}{clusterForm[next_char]}{clusterForm[after_next]}a")
@@ -1087,7 +1111,9 @@ def transcript(text):
             and all_but_sc in vowelExtendedForm
         ):
             if after_next == 'ှ':
-                if (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
+                if ((next_char in ['ြ']) and char == "ခ"):
+                        output.append('cH' + vowelExtendedForm[all_but_sc])
+                elif (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
                     output.append(vowelForm.get(after_next, "") + modifyForm[char] + vowelExtendedForm[all_but_sc])
                 else:
                     if 'ရ' in char:
@@ -1101,7 +1127,9 @@ def transcript(text):
                         )
                 i += 2 + len(all_but_sc)
             else:
-                if (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
+                if ((next_char in ['ြ']) and char == "ခ"):
+                        output.append('cH' + vowelExtendedForm[all_but_sc])
+                elif (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
                     output.append(modifyForm[char] + vowelExtendedForm[all_but_sc])
                 else:
                     output.append(singleton[char] + clusterForm[next_char] + vowelExtendedForm[all_but_sc])
@@ -1111,7 +1139,9 @@ def transcript(text):
         elif char in singleton and next_char in clusterForm:
             if after_next in vowelForm:
                 if after_next == 'ှ':
-                    if (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
+                    if ((next_char in ['ြ']) and char == "ခ"):
+                        output.append('cHa')
+                    elif (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
                         output.append(f"{vowelForm.get(after_next, '')}{modifyForm[char]}a")
                     else:
                         if 'ရ' in char:
@@ -1119,17 +1149,22 @@ def transcript(text):
                         else:
                             output.append(f"{vowelForm.get(after_next, '')}{singleton[char]}{clusterForm[next_char]}a")
                 else:
-                    if (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
+                    if ((next_char in ['ြ']) and char == "ခ"):
+                        output.append('cH' + vowelForm[after_next])
+                    elif (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
                         output.append(modifyForm[char] + vowelForm[after_next])
                     else:
                         output.append(singleton[char] + clusterForm[next_char] + vowelForm[after_next])
                 i += 3
             else:
-                if (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
+                if ((next_char in ['ြ']) and char == "ခ"):
+                        output.append('cHa')
+                elif (next_char in ['ျ', 'ြ'] or any(c in next_char for c in ['ျ', 'ြ'])) and char in modifyForm:
                     output.append(f"{modifyForm[char]}a")
                 else:
                     output.append(f"{singleton[char]}{clusterForm[next_char]}a")
                 i += 2
+            print('-------------------rule: 2.0')
 
         # Rule 1.1: Singleton + Vowel Extended Forms
         elif char in singleton and all_but_s in vowelExtendedForm:

@@ -192,7 +192,7 @@ def get_map(text, word_dict):
 
     return mapped_word
 
-def capitalize(string):
+def _capitalize(string):
     return string if not string else string[0].upper() + string[1:]
 
 ##################

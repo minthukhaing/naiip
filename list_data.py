@@ -13,7 +13,7 @@ data1 = [
     ["၂", "ခ", "/kh/", "kha", "ခရေ", "Kha Yay"],
     ["၃", "ဂ/ ဃ", "/g/", "ga/ gga", "ဂမုန်းပွင့်", "Ga Mone Pwint"],
     ["၄", "င", "/ng/", "nga", "ငပလီ", "Nga Pa Le"],
-    ["၅", "စ", "/s/", "sa", "စမုန်မြစ်", "Sa Moun Myit"],
+    ["၅", "စ", "/s/", "sa", "စမုန်မြစ်", "Sa Moun MYit"],
     ["၆", "ဆ", "/hs/", "hsa", "ဆလတ်ရွက်", "Hsa Lat Ywet"],
     ["၇", "ဇ/ ဈ", "/z/", "za/ zza", "ဇလပ်ဝါ", "Za Lap War"],
     ["၈", "ည/ ဉ", "/nj/", "nya", "ဉာဏ်မှူး/ မိုးည", "Nyan Hmue/ Moe Nya"],
@@ -31,11 +31,11 @@ data1 = [
     ["၂၀", "ဝ", "/w/", "wa", "ဝဥ", "Wa Ou"],
     ["၂၁", "သ", "/th/", "tha", "သမင်", "Tha Min"],
     ["၂၂", "ဟ", "/h/", "ha", "ဟဟာဟ", "Ha Har Ha"],
-    ["၂၃", "ကျ/ ကြ", "/kj/", "kya", "ကျပင်းဆရာဖီး", "Kya Pinn Hsayar Phee"],
-    ["၂၄", "ချ/ ခြ", "/ch/", "cha", "ချရားပင်", "Cha Rarr Pin"],
-    ["၂၅", "ဂျ/ ဂြ", "/gj/", "gya", "ဂျလေဘီမုန့်", "Gya Lay Be Mont"],
+    ["၂၃", "ကျ/ ကြ", "/kj/", "kya/ kYa", "ကျပင်းဆရာဖီး", "KYa Pinn Hsayar Phee"],
+    ["၂၄", "ချ/ ခြ", "/ch/", "cha/ CHa", "ချရားပင်", "Cha Rarr Pin"],
+    ["၂၅", "ဂျ/ ဂြ", "/gj/", "gya/ gYa", "ဂျလေဘီမုန့်", "Gya Lay Be Mont"],
     ["၂၆", "ငှ", "/hng/", "hnga", "ငှက်ဖျား", "Hnget Phyarr"],
-    ["၂၇", "ညှ", "/hnj/", "hnya", "ကြံညှပ်", "Kyam Hnyap"],
+    ["၂၇", "ညှ", "/hnj/", "hnya", "ကြံညှပ်", "KYam Hnyap"],
     ["၂၈", "နှ", "/hn/", "hna", "နှမ", "Hna Ma"],
     ["၂၉", "မှ", "/hm/", "hma", "မှာတမ်းလွှာ", "Hmar Tamm Hlwar"],
     ["၃၀", "ရှ", "/sh/", "sha", "ရှောက်ရွှာမိုး/ လျှောက်လွှာ", "Shauk Shwar Moe/ Shauk Hlwar"],
@@ -55,7 +55,7 @@ header2 = [
 
 data2 = [
     ["၁", "ျ", "/j/", "y", "ယပင့်", "Ya Pint"],
-    ["၂", "ြ", "/j/", "y", "ယယစ်", "Ya Yit"],
+    ["၂", "ြ", "/j/", "Y", "ယယစ်", "Ya Yit"],
     ["၃", "ွ", "/w/", "w", "ဝဆွဲ", "Wa Hswell"]
 ]
 
@@ -73,41 +73,41 @@ data3 = [
     ["၂", "အာ", "/a/", "ar", "အာကာမျိုး", "Arkar Myoe"],
     ["၃", "အ", "/a./", "ah", "မောင်အ", "Mg Ah"],
     ["၄", "အား", "/a:/", "arr", "ဦးဖိုးကျား", "U Phoe Kyarr"],
-    ["၅", "အီ/ ဤ/ အည်", "/i/", "e/ i", "ရီရီမြင့်/ စည်သူဝင်း", "Re Re Myint/ Sithuu Winn"],
+    ["၅", "အီ/ ဤ/ အည်", "/i/", "e/ i", "ရီရီမြင့်/ စည်သူဝင်း", "Re Re MYint/ Sithuu Winn"],
     ["၆", "အိ/ ဣ/ ၏/ အည့်", "/i./", "ei/ eii", "အိအိချွန်/ ဖူးပြည့်ခိုင်/ အိနန္ဒာကျော့",
-        "Ei Ei Chun/ Phoo Pyei Khaing/ Ei Nandar Kyawt"
+        "Ei Ei Chun/ Phoo PYeii Khaing/ Ei Nandar Kyawt"
     ],
     ["၇", "အီး/ အည်း", "/i:/", "ee/ ii", "နတ်သမီး", "Nat Tha Mee"],
     ["၈", "အူ/ ဦ", "/u/", "uu/ oou", "သူဇာ/ မူမူခိုင်", "Thuuzar/ Muu Muu Khaing"],
     ["၉", "အု/ ဥ", "/u./", "ou/ u", "ရွှေဥ/ ယုယု", "Shway Ou/ Yu Yu"],
-    ["၁၀", "အူး/ ဦး", "/u:/", "oo/ U/ ue", "ဦးမြဦး/ ဖူးဖူး/ မှူးမှူး", "U Mya Oo/ Phoo Phoo/ Hmue Hmue"],
-    ["၁၁", "အေ/ ဧ", "/ei/", "ay/ ayy", "ဖေမြင့်", "Phay Myint"],
-    ["၁၂", "အေ့", "/ei./", "ae", "ချမ်းမြေ့မောင်ချို", "Chamm Myae Maung Cho"],
-    ["၁၃", "အေး", "/ei:/", "aye", "ဒေါ်အေးအေးမြင့်", "Daw Aye Aye Myint"],
-    ["၁၄", "အယ်", "/e/", "el", "မိုးမြင့်ကြယ်", "Moe Myint Kyel"],
+    ["၁၀", "အူး/ ဦး", "/u:/", "oo/ U/ ue", "ဦးမြဦး/ ဖူးဖူး/ မှူးမှူး", "U MYa Oo/ Phoo Phoo/ Hmue Hmue"],
+    ["၁၁", "အေ/ ဧ", "/ei/", "ay/ ayy", "ဖေမြင့်", "Phay MYint"],
+    ["၁၂", "အေ့", "/ei./", "ae", "ချမ်းမြေ့မောင်ချို", "Chamm MYae Maung Cho"],
+    ["၁၃", "အေး", "/ei:/", "aye", "ဒေါ်အေးအေးမြင့်", "Daw Aye Aye MYint"],
+    ["၁၄", "အယ်", "/e/", "el", "မိုးမြင့်ကြယ်", "Moe MYint KYel"],
     ["၁၅", "အဲ့/ အယ့်", "/e./", "elt/ ellt", "လဲ့လဲ့ဝင်း", "Lelt Lelt Winn"],
     ["၁၆", "အဲ", "/e:/", "ell", "စောခူဆဲ", "Saww Khuu Hsell"],
     ["၁၇", "အော်/ ‌ဪ", "/o/", "aw/ aaw", "ဦးပေါ်ဦး/ ကျော်ကျော်", "U Paw Oo/ Kyaw Kyaw"],
     ["၁၈", "အော့", "/o./", "awt", "ပန်းတမော့/ အိကျော့", "Pann Ta Mawt/ Ei Kyawt"],
     ["၁၉", "အော/ ဩ", "/o:/", "aww/ aaww", "စောတောနော်", "Saww Taww Naw"],
-    ["၂၀", "အို", "/ou/", "o", "ကိုပြည်", "Ko Pyi"],
+    ["၂၀", "အို", "/ou/", "o", "ကိုပြည်", "Ko PYi"],
     ["၂၁", "အို့", "/ou./", "oh", "မို့မို့ဇော်ဝင်း", "Moh Moh Zaw Winn"],
-    ["၂၂", "အိုး", "/ou:/", "oe", "မောင်သာနိုး/ ပြအိုး", "Mg Thar Noe/ Pya Oe"],
+    ["၂၂", "အိုး", "/ou:/", "oe", "မောင်သာနိုး/ ပြအိုး", "Mg Thar Noe/ PYa Oe"],
     ["၂၃", "အက်", "/e'/", "et", "ခင်ခက်ခက်ခိုင်", "Khin Khet Khet Khaing"],
     ["၂၄", "အောက်", "/au'/", "auk", "မောင်ပေါက်စီ", "Mg Pauk Se"],
     ["၂၅", "အိုက်", "/ai'/", "aik", "ဦးတိုက်စံ", "U Taik Sam"],
     ["၂၆", "အင်/ အဉ်", "/in/", "in/ iin", "ထူးအိမ်သင်", "Htoo Eim Thin"],
-    ["၂၇", "အင့်/ အဉ့်", "/in./", "int/ iint", "မြင့်သူ", "Myint Thuu"],
+    ["၂၇", "အင့်/ အဉ့်", "/in./", "int/ iint", "မြင့်သူ", "MYint Thuu"],
     ["၂၈", "အင်း / အဉ်း", "/in:/", "inn/ iinn", "ခင်ဇော်ဝင်း", "Khin Zaw Winn"],
     ["၂၉", "အောင်", "/aun/", "aung/ -g", "မောင်မောင်မောင်အောင်", "Mg Maung Maung Aung"],
-    ["၃၀", "အောင့်", "/aun./", "ount", "မြို့ထောင့်စေတီ", "Myoh Htount Say Te"],
+    ["၃၀", "အောင့်", "/aun./", "ount", "မြို့ထောင့်စေတီ", "MYoh Htount Say Te"],
     ["၃၁", "အောင်း", "/aun:/", "oung", "အောင်မောင်း", "Aung Moung"],
     ["၃၂", "အိုင်", "/ain/", "aing", "ဇော်ပိုင်", "Zaw Paing"],
     ["၃၃", "အိုင့်", "/ain./", "aint", "တစ်လုံးချိုင့်", "Tit Lome Chaint"],
     ["၃၄", "အိုင်း", "/ain:/", "ai/ ine/ inme", "စိုင်းစိုင်း/ ရှိုင်းဝေအောင်", "Sai Sai/ Shine Way Aung"],
     ["၃၅", "အစ်", "/I'/", "it", "ကစ်ကစ်", "Kit Kit"],
     ["၃၆", "အတ်/ အပ်", "/a'/", "at/ ap/ -ao", "မြတ်ကျော်/ ဇလပ်ဖြူ/ စဝ်ခွန်မိန်း",
-        "Myat Kyaw/ Za Lap Phyuu/ Sao Khun Meinn"
+        "MYat Kyaw/ Za Lap PhYuu/ Sao Khun Meinn"
     ],
     ["၃၇", "အိတ်/ အိပ်", "/ei'/", "eik/ ake", "သိဒ္ဓိစိုး/ ဆိပ်ခွန်", "Theikdei Soe/ Hsake Khun"],
     ["၃၈", "အုတ်/ အုပ်", "/ou'/", "oat/ oak/ oke", "ဦးဗုဒ်/ အုပ်စိုးခန့်", "U Boak/ Oke Soe Khant"],
@@ -115,12 +115,12 @@ data3 = [
     ["၄၀", "အန့်/ အမ့်/ အံ့", "/an./", "ant/ amt/ anmt", "ခန့်စည်သူ/ အံ့မျိုးထွဋ်", "Khant Sithuu/ Amt Myoe Htutt"],
     ["၄၁", "အန်း/ အမ်း", "/an:/", "ann/ amm/ anmm", "အောင်ဆန်း/ စမ်းစမ်း", "Aung Hsann/ Samm Samm"],
     ["၄၂", "အိန်/ အိမ်", "/ein/", "ein/ eim/ einm", "စိန်စိန်/ ထူးအိမ်သင်", "Sein Sein/ Htoo Eim Thin"],
-    ["၄၃", "အိန့်/ အိမ့်", "/ein./", "eint/ eimt/ einmt", "အိမ့်နေခြည်/ မောင်စိမ့်", "Eimt Nay Chi/ Mg Seimt"],
+    ["၄၃", "အိန့်/ အိမ့်", "/ein./", "eint/ eimt/ einmt", "အိမ့်နေခြည်/ မောင်စိမ့်", "Eimt Nay CHi/ Mg Seimt"],
     ["၄၄", "အိန်း/ အိမ်း", "/ein:/", "einn/ eimm/ einmm", "သိန်းသန်းစိုး/ စိမ်းစိမ်းဦး",
         "Theinn Thann Soe/ Seimm Seimm Oo"
     ],
     ["၄၅", "အုန်/ အုမ်/ အုံ", "/oun/", "ohn/ ohm/ oun/ oum/ ohnm", "ပြည်စုန်မင်း/ ဥမ္မာခင်/ ခုံတော်",
-        "Pyi Soun Minn/ Ohmmar Khin/ Khoum Taw"
+        "PYi Soun Minn/ Ohmmar Khin/ Khoum Taw"
     ],
     ["၄၆", "အုန့်/ အုမ့်/ အုံ့ ", "/oun./", "ont/ omt/ onmt", "ပုံ့ပုံ့", "Pomt Pomt"],
     ["၄၇", "အုန်း/ အုမ်း/ အုံး", "/oun:/", "own/ owm/ one/ ome/ ownm", "ဦးအုန်းမောင်/ မောင်ဖုန်းနိုင်",
@@ -129,7 +129,7 @@ data3 = [
     ["၄၈", "အွတ်/ အွပ်", "/u'/", "ut/ utt", "ဇော်ဝင်းထွဋ်", "Zaw Winn Htutt"],
     ["၄၉", "အွန်", "/un/", "un/ um/ on/ unm", "ခွန်အောင်နိုင်/မွန်", "Khun Aung Naing/ Mon"],
     ["၅၀", "အွန့်", "/un./", "unt/ umt/ unmt", "မျိုးညွန့်", "Myoe Nyunt"],
-    ["၅၁", "အွန်း", "/un:/", "unn/ umm/ unnm", "ခွန်းဆင့်နေခြည်", "Khunn Hsint Nay Chi"]
+    ["၅၁", "အွန်း", "/un:/", "unn/ umm/ unnm", "ခွန်းဆင့်နေခြည်", "Khunn Hsint Nay CHi"]
 ]
 
 content_list_1 = [
