@@ -31,7 +31,7 @@ data1 = [
     ["၂၀", "ဝ", "/w/", "wa", "ဝဥ", "Wa Ou"],
     ["၂၁", "သ", "/th/", "tha", "သမင်", "Tha Min"],
     ["၂၂", "ဟ", "/h/", "ha", "ဟဟာဟ", "Ha Har Ha"],
-    ["၂၃", "ကျ/ ကြ", "/kj/", "kya/ kYa", "ကျပင်းဆရာဖီး", "KYa Pinn Hsayar Phee"],
+    ["၂၃", "ကျ/ ကြ", "/kj/", "kya/ kYa", "ကျပင်းဆရာဖီး", "Kya Pinn Hsayar Phee"],
     ["၂၄", "ချ/ ခြ", "/ch/", "cha/ CHa", "ချရားပင်", "Cha Rarr Pin"],
     ["၂၅", "ဂျ/ ဂြ", "/gj/", "gya/ gYa", "ဂျလေဘီမုန့်", "Gya Lay Be Mont"],
     ["၂၆", "ငှ", "/hng/", "hnga", "ငှက်ဖျား", "Hnget Phyarr"],
@@ -55,7 +55,7 @@ header2 = [
 
 data2 = [
     ["၁", "ျ", "/j/", "y", "ယပင့်", "Ya Pint"],
-    ["၂", "ြ", "/j/", "Y", "ယယစ်", "Ya Yit"],
+    ["၂", "ြ", "/j/", "Y/ r", "ယယစ်", "Ya Yit"],
     ["၃", "ွ", "/w/", "w", "ဝဆွဲ", "Wa Hswell"]
 ]
 
@@ -110,7 +110,7 @@ data3 = [
         "MYat Kyaw/ Za Lap PhYuu/ Sao Khun Meinn"
     ],
     ["၃၇", "အိတ်/ အိပ်", "/ei'/", "eik/ ake", "သိဒ္ဓိစိုး/ ဆိပ်ခွန်", "Theikdei Soe/ Hsake Khun"],
-    ["၃၈", "အုတ်/ အုပ်", "/ou'/", "oat/ oak/ oke", "ဦးဗုဒ်/ အုပ်စိုးခန့်", "U Boak/ Oke Soe Khant"],
+    ["၃၈", "အုတ်/ အုပ်", "/ou'/", "oat/ oak/ oke", "ဦးဗုဒ်/ အုပ်စိုးခန့်", "U Bboak/ Oke Soe Khant"],
     ["၃၉", "အန်/ အမ်/ အံ ", "/an/", "an/ am/ anm", "ရန်နိုင်/ ဦးယံ", "Ran Naing/ U Yam"],
     ["၄၀", "အန့်/ အမ့်/ အံ့", "/an./", "ant/ amt/ anmt", "ခန့်စည်သူ/ အံ့မျိုးထွဋ်", "Khant Sithuu/ Amt Myoe Htutt"],
     ["၄၁", "အန်း/ အမ်း", "/an:/", "ann/ amm/ anmm", "အောင်ဆန်း/ စမ်းစမ်း", "Aung Hsann/ Samm Samm"],

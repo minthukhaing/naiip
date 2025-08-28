@@ -1,6 +1,33 @@
 {% extends "index.html" %} {% block title %}မူလစာမျက်နှာ{% endblock %} {% block
 body %}
 
+<style>
+  /* Row and Column Layout (Flexbox) */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+  .col-md-6 {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom: 20px;
+    /* Adds space between columns on small screens */
+  }
+
+  /* Media query for medium screens and up */
+  @media (min-width: 768px) {
+    .col-md-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+</style>
+
 <h2 class="page-title">NAME CHECKER APP</h2>
 <div class="card-box">
   <div class="tabs">
@@ -13,132 +40,156 @@ body %}
         <label for="inputField">မြန်မာအမည် ရိုက်ထည့်ပါ။</label>
         <i class="fas fa-file-word"></i>
         <textarea id="mmname" placeholder="မြန်မာအမည် ရိုက်ထည့်ပါ။" rows="4"></textarea>
-         <span class="fas fa-copy toggle-password" id="toggleTextareaIcon" onclick="copy('mmname','ms1')" title="Copy text"></span>
+        <span class="fas fa-copy toggle-password" id="toggleTextareaIcon" onclick="copy('mmname','ms1')"
+          title="Copy text"></span>
       </div>
-      <span
-        id="ms1"
-        style="color: limegreen; margin-left: 10px; display: none"
-        >✔ Copied!</span>
+      <span id="ms1" style="color: limegreen; margin-left: 10px; display: none">✔ Copied!</span>
       <!-- <button class="btn-liquid" style="width: 40%;" id="btnmyen">Convert</button> -->
-      <button class="btn-liquid"  id="btncleanmy">Clean</button>
+      <button class="btn-liquid" id="btncleanmy">Clean</button>
       <div class="form-group">
         <label for="inputField">မြန်မာ - အင်္ဂလိပ်</label>
         <i class="fas fa-file-word"></i>
         <textarea name="mmconvert" placeholder="Converted Name" rows="4" readonly id="mmconvert"></textarea>
-        <span class="fas fa-copy toggle-password" id="toggleTextareaIcon" onclick="copy('mmconvert','ms2')" title="Copy text"></span>
+        <span class="fas fa-copy toggle-password" id="toggleTextareaIcon" onclick="copy('mmconvert','ms2')"
+          title="Copy text"></span>
       </div>
-      <span
-        id="ms2"
-        style="color: limegreen; margin-left: 10px; display: none"
-        >✔ Copied!</span>
+      <span id="ms2" style="color: limegreen; margin-left: 10px; display: none">✔ Copied!</span>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="inputField">Myanmar - Phoneme</label>
+            <i class="fas fa-file-word"></i>
+            <textarea name="mmconvert1" placeholder="Converted Name" rows="4" readonly id="mmconvert1"></textarea>
+            <span class="fas fa-copy toggle-password" id="toggleTextareaIcon" onclick="copy('mmconvert1','ms3')"
+              title="Copy text"></span>
+          </div>
+          <span id="ms3" style="color: limegreen; margin-left: 10px; display: none">✔ Copied!</span>
 
-    </div>
-    <div class="tab-content" id="tab2">
-      <div class="form-group">
-        <label for="inputField">ပါဠိအမည် ရိုက်ထည့်ပါ။</label>
-        <i class="fas fa-file-word"></i>
-        <textarea id="parliname" placeholder="ပါဠိအမည် ရိုက်ထည့်ပါ။" rows="4"></textarea>
-        <span class="fas fa-copy toggle-password" id="toggleTextareaIcon" onclick="copy('parliname','ps1')" title="Copy text"></span>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="inputField">Myanmar - IPA</label>
+            <i class="fas fa-file-word"></i>
+            <textarea name="mmconvert2" placeholder="Converted Name" rows="4" readonly id="mmconvert2"></textarea>
+            <span class="fas fa-copy toggle-password" id="toggleTextareaIcon" onclick="copy('mmconvert2','ms4')"
+              title="Copy text"></span>
+          </div>
+          <span id="ms4" style="color: limegreen; margin-left: 10px; display: none">✔ Copied!</span>
+        </div>
       </div>
-      <span
-        id="ps1"
-        style="color: limegreen; margin-left: 10px; display: none"
-        >✔ Copied!</span
-      >
-      <!-- <button class="btn-liquid" style="width: 40%;" id="btnparlit">Convert</button> -->
-      <button class="btn-liquid"  id="btncleanparli">Clean</button>
-      <div class="form-group">
-        <label for="inputField">ပါဠိ - ရိုမန်</label>
-        <i class="fas fa-file-word"></i>
-        <textarea rows="4" name="parliconvert" placeholder="Converted Name" id="parliconvert"></textarea>
-        <span class="fas fa-copy toggle-password" id="toggleTextareaIcon" onclick="copy('parliconvert','ps2')" title="Copy text"></span>
-      </div>     
-      <span
-        id="ps2"
-        style="color: limegreen; margin-left: 10px; display: none"
-        >✔ Copied!</span
-      >
-      
+      <div class="tab-content" id="tab2">
+        <div class="form-group">
+          <label for="inputField">ပါဠိအမည် ရိုက်ထည့်ပါ။</label>
+          <i class="fas fa-file-word"></i>
+          <textarea id="parliname" placeholder="ပါဠိအမည် ရိုက်ထည့်ပါ။" rows="4"></textarea>
+          <span class="fas fa-copy toggle-password" id="toggleTextareaIcon" onclick="copy('parliname','ps1')"
+            title="Copy text"></span>
+        </div>
+        <span id="ps1" style="color: limegreen; margin-left: 10px; display: none">✔ Copied!</span>
+        <!-- <button class="btn-liquid" style="width: 40%;" id="btnparlit">Convert</button> -->
+        <button class="btn-liquid" id="btncleanparli">Clean</button>
+        <div class="form-group">
+          <label for="inputField">ပါဠိ - ရိုမန်</label>
+          <i class="fas fa-file-word"></i>
+          <textarea rows="4" name="parliconvert" placeholder="Converted Name" id="parliconvert"></textarea>
+          <span class="fas fa-copy toggle-password" id="toggleTextareaIcon" onclick="copy('parliconvert','ps2')"
+            title="Copy text"></span>
+        </div>
+        <span id="ps2" style="color: limegreen; margin-left: 10px; display: none">✔ Copied!</span>
+
+      </div>
     </div>
   </div>
-</div>
-<br />
-<div class="card-box">{% include 'comment.html' %}<br></div>
-<!-- <script src="{{ url_for('static', filename='css/jquery.min.js') }}"></script> -->
-<script>
- 
+  <br />
+  <div class="card-box">{% include 'comment.html' %}<br></div>
+  <!-- <script src="{{ url_for('static', filename='css/jquery.min.js') }}"></script> -->
+  <script>
 
-  $(document).ready(function () {
 
-    // $("#mmname").on("input", function (e) {
-    //    let value = $(this).val();
-    //    let filteredValue = value.replace(/[^ဣဤဥဦဧဩဪဿက-၉ဂ-စဆ-ညဋ-ဍဎ-ဏတ-တဘ-မယ-ယရ-လဝ-ဟအ-အ်ါ-ဲံ-့း]/g, "");
-    //    $(this).val(filteredValue);
-    // });
+    $(document).ready(function () {
 
-    function my_en() {
-      var name = $("#mmname").val();
+      // $("#mmname").on("input", function (e) {
+      //    let value = $(this).val();
+      //    let filteredValue = value.replace(/[^ဣဤဥဦဧဩဪဿက-၉ဂ-စဆ-ညဋ-ဍဎ-ဏတ-တဘ-မယ-ယရ-လဝ-ဟအ-အ်ါ-ဲံ-့း]/g, "");
+      //    $(this).val(filteredValue);
+      // });
 
-      $.ajax({
-        type: "POST",
-        url: "/convert_my",
-        data: JSON.stringify({
-          name: name,
-        }),
-        contentType: "application/json",
-        success: function (response) {
-          $("#mmconvert").val(response.message);
-        },
+      function my_en() {
+        var name = $("#mmname").val();
+
+        $.ajax({
+          type: "POST",
+          url: "/convert_my",
+          data: JSON.stringify({
+            name: name,
+          }),
+          contentType: "application/json",
+          success: function (response) {
+            console.log(typeof response.message);
+            console.log(response.message);
+            var parts = response.message;
+
+            // parts array မှာ ["a", "b", "c"] ဆိုပြီး ပါဝင်လာပါမယ်။
+            var valueA = parts[0];
+            var valueB = parts[1];
+            var valueC = parts[2];
+
+            $("#mmconvert").val(valueA);
+            $("#mmconvert1").val(valueB);
+            $("#mmconvert2").val(valueC);
+          },
+        });
+      }
+
+      function parli_en() {
+        var name = $("#parliname").val();
+
+        $.ajax({
+          type: "POST",
+          url: "/convert_parlit",
+          data: JSON.stringify({
+            name: name,
+          }),
+          contentType: "application/json",
+          success: function (response) {
+            $("#parliconvert").val(response.message);
+          },
+        });
+      }
+      $("#mmname").on("keyup", function (e) {
+        // if(e.key=="Enter" || e.keyCode===13){
+        //   e.preventDefault();
+        my_en(); // Enter key ကိုနှိပ်သောအခါ convert လုပ်ရန်
+        // }
       });
-    }
 
-    function parli_en() {
-      var name = $("#parliname").val();
-
-      $.ajax({
-        type: "POST",
-        url: "/convert_parlit",
-        data: JSON.stringify({
-          name: name,
-        }),
-        contentType: "application/json",
-        success: function (response) {
-          $("#parliconvert").val(response.message);
-        },
+      $("#btnmyen").click(function () {
+        my_en(); // Button ကိုနှိပ်သောအခါ convert လုပ်ရန်
       });
-    }
-    $("#mmname").on("keyup", function (e) {
-      // if(e.key=="Enter" || e.keyCode===13){
-      //   e.preventDefault();
-      my_en(); // Enter key ကိုနှိပ်သောအခါ convert လုပ်ရန်
-      // }
-    });
 
-    $("#btnmyen").click(function () {
-      my_en(); // Button ကိုနှိပ်သောအခါ convert လုပ်ရန်
-    });
-
-    $("#parliname").on("keyup", function (e) {
-      // if (e.key === "Enter" || e.keyCode === 13) {
-       // e.preventDefault(); // Form submit ကိုရှောင်ရန်
+      $("#parliname").on("keyup", function (e) {
+        // if (e.key === "Enter" || e.keyCode === 13) {
+        // e.preventDefault(); // Form submit ကိုရှောင်ရန်
         parli_en(); // Enter key ကိုနှိပ်သောအခါ convert လုပ်ရန်
-      //}
-    });
+        //}
+      });
 
-    $("#btnparlit").click(function () {
-      parli_en();
-    });
+      $("#btnparlit").click(function () {
+        parli_en();
+      });
 
-    $("#btncleanmy").click(function () {
-      $("#mmname").val("");
-      $("#mmconvert").val("");
-    });
+      $("#btncleanmy").click(function () {
+        $("#mmname").val("");
+        $("#mmconvert").val("");
+        $("#mmconvert1").val("");
+        $("#mmconvert2").val("");
+      });
 
-    $("#btncleanparli").click(function () {
-      $("#parliname").val("");
-      $("#parliconvert").val("");
+      $("#btncleanparli").click(function () {
+        $("#parliname").val("");
+        $("#parliconvert").val("");
+      });
     });
-  });
-</script>
+  </script>
 
-{% endblock %}
+  {% endblock %}
